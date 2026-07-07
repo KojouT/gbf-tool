@@ -1,0 +1,31 @@
+[
+  {
+  "name": "オプティマスブースト・ファイア",
+  "effects": 
+    {
+      "type": "skill_boost",
+      "value": 30
+    }
+  },
+  {
+  "name": "火の刹那",
+  "effects": [
+    {
+      "type": "normal_attack",
+      "value": 15
+    },
+    {
+      "type": "critical",
+      "value": 15
+    }
+   ]
+  },
+  {
+  "name": "紅蓮の襲刃",
+  "effects": 
+    {
+      "type": "additional_attack",
+      "value": 15
+    }
+  }
+]
