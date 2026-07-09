@@ -6,6 +6,8 @@ fetch("data/weapons.json")
 
         const weaponList = document.getElementById("weapon-list");
     
+        for (let i = 1; i <= 10; i++) {
+
         // プルダウンを作成
         const select = document.createElement("select");
 
@@ -23,4 +25,5 @@ fetch("data/weapons.json")
 
         weaponList.appendChild(select);
 
+       }
     });
