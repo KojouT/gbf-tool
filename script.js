@@ -5,25 +5,28 @@ fetch("data/weapons.json")
         console.log(data);
 
         const weaponList = document.getElementById("weapon-list");
-    
+
         for (let i = 1; i <= 10; i++) {
+            const label = document.createElement("p");
+            label.textContent = `武器 ${i}:`;
 
-        // プルダウンを作成
-        const select = document.createElement("select");
+            // プルダウンを作成
+            const select = document.createElement("select");
 
-        // 武器を追加
-        data.forEach(weapon => {
+            // 武器を追加
+            data.forEach(weapon => {
 
-            const option = document.createElement("option");
+                const option = document.createElement("option");
 
-            option.value = weapon.id;
-            option.textContent = weapon.name;
+                option.value = weapon.id;
+                option.textContent = weapon.name;
 
-            select.appendChild(option);
+                select.appendChild(option);
 
-        });
+            });
 
-        weaponList.appendChild(select);
+            weaponList.appendChild(label);
+            weaponList.appendChild(select);
 
-       }
+        }
     });
