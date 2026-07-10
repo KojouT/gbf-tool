@@ -25,6 +25,12 @@ fetch("data/weapons.json")
 
             });
 
+            select.addEventListener("change", function () {
+
+                console.log(select.value);
+
+            });
+
             weaponList.appendChild(label);
             weaponList.appendChild(select);
 
