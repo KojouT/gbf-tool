@@ -29,6 +29,10 @@ fetch("data/weapons.json")
 
                 console.log(select.value);
 
+                const selectedWeapon = data.find(weapon => weapon.id === select.value);
+
+                console.log(selectedWeapon);
+
             });
 
             weaponList.appendChild(label);
