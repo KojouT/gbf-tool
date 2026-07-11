@@ -1,8 +1,12 @@
-fetch("data/weapons.json")
-    .then(response => response.json())
-    .then(data => {
-
-        console.log(data);
+Promise.all([
+    fetch("data/weapons.json")
+        .then(response => response.json()),
+    fetch("data/skills.json")
+        .then(response => response.json())
+])
+    .then(([weapons, skills]) => {
+        console.log(weapons);
+        console.log(skills);
 
         const weaponList = document.getElementById("weapon-list");
 
@@ -14,7 +18,7 @@ fetch("data/weapons.json")
             const select = document.createElement("select");
 
             // 武器を追加
-            data.forEach(weapon => {
+            weapons.forEach(weapon => {
 
                 const option = document.createElement("option");
 
@@ -29,9 +33,19 @@ fetch("data/weapons.json")
 
                 console.log(select.value);
 
-                const selectedWeapon = data.find(weapon => weapon.id === select.value);
+                const selectedWeapon = weapons.find(weapon => weapon.id === select.value);
 
                 console.log(selectedWeapon);
+
+                console.log(selectedWeapon.skills);
+
+                selectedWeapon.skills.forEach(skillName => {
+
+                    const skillData = skills.find(skill => skill.name === skillName);
+
+                    console.log(skillData);
+
+                });
 
             });
 
