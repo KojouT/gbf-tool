@@ -31,6 +31,8 @@ Promise.all([
 
             select.addEventListener("change", function () {
 
+                let normalAttack = 0;
+
                 console.log(select.value);
 
                 const selectedWeapon = weapons.find(weapon => weapon.id === select.value);
@@ -51,9 +53,17 @@ Promise.all([
 
                         console.log(effect);
 
+                        if (effect.type === "normal_attack") {
+
+                            normalAttack += effect.value;
+
+                        }
+
                     });
 
                 });
+
+                console.log(normalAttack);
 
             });
 
