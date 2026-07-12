@@ -45,6 +45,14 @@ Promise.all([
 
                     console.log(skillData);
 
+                    console.log(skillData.effects);
+
+                    skillData.effects.forEach(effect => {
+
+                        console.log(effect);
+
+                    });
+
                 });
 
             });
