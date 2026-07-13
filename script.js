@@ -9,6 +9,7 @@ Promise.all([
         console.log(skills);
 
         const weaponList = document.getElementById("weapon-list");
+        const result = document.getElementById("result");
 
         for (let i = 1; i <= 10; i++) {
             const label = document.createElement("p");
@@ -65,10 +66,15 @@ Promise.all([
 
                 console.log(normalAttack);
 
+                result.textContent = `攻刃 : ${normalAttack}%`;
+
             });
 
             weaponList.appendChild(label);
             weaponList.appendChild(select);
 
         }
+
+        
+
     });
