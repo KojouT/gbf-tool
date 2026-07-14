@@ -13,6 +13,38 @@ Promise.all([
 
         const weaponSelects = [];
 
+        function calculateResult() {
+
+            const totals = {
+                normalAttack: 0
+            };
+
+            weaponSelects.forEach(select => {
+
+                const selectedWeapon = weapons.find(weapon => weapon.id === select.value);
+
+                selectedWeapon.skills.forEach(skillName => {
+
+                    const skillData = skills.find(skill => skill.name === skillName);
+
+                    skillData.effects.forEach(effect => {
+
+                        if (effect.type === "normal_attack") {
+
+                            totals.normalAttack += effect.value;
+
+                        }
+
+                    });
+
+                });
+
+                result.textContent = `攻刃 : ${totals.normalAttack}%`;
+
+            });
+
+        }
+
         for (let i = 1; i <= 10; i++) {
             const label = document.createElement("p");
             label.textContent = `武器 ${i}:`;
@@ -34,30 +66,7 @@ Promise.all([
 
             select.addEventListener("change", function () {
 
-                let normalAttack = 0;
-                weaponSelects.forEach(select => {
-
-                    const selectedWeapon = weapons.find(weapon => weapon.id === select.value);
-
-                    selectedWeapon.skills.forEach(skillName => {
-
-                        const skillData = skills.find(skill => skill.name === skillName);
-
-                        skillData.effects.forEach(effect => {
-
-                            if (effect.type === "normal_attack") {
-
-                                normalAttack += effect.value;
-
-                            }
-
-                        });
-
-                    });
-
-                    result.textContent = `攻刃 : ${normalAttack}%`;
-
-                });
+                calculateResult();
 
             });
 
