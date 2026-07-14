@@ -11,6 +11,8 @@ Promise.all([
         const weaponList = document.getElementById("weapon-list");
         const result = document.getElementById("result");
 
+        const weaponSelects = [];
+
         for (let i = 1; i <= 10; i++) {
             const label = document.createElement("p");
             label.textContent = `武器 ${i}:`;
@@ -33,48 +35,36 @@ Promise.all([
             select.addEventListener("change", function () {
 
                 let normalAttack = 0;
+                weaponSelects.forEach(select => {
 
-                console.log(select.value);
+                    const selectedWeapon = weapons.find(weapon => weapon.id === select.value);
 
-                const selectedWeapon = weapons.find(weapon => weapon.id === select.value);
+                    selectedWeapon.skills.forEach(skillName => {
 
-                console.log(selectedWeapon);
+                        const skillData = skills.find(skill => skill.name === skillName);
 
-                console.log(selectedWeapon.skills);
+                        skillData.effects.forEach(effect => {
 
-                selectedWeapon.skills.forEach(skillName => {
+                            if (effect.type === "normal_attack") {
 
-                    const skillData = skills.find(skill => skill.name === skillName);
+                                normalAttack += effect.value;
 
-                    console.log(skillData);
+                            }
 
-                    console.log(skillData.effects);
-
-                    skillData.effects.forEach(effect => {
-
-                        console.log(effect);
-
-                        if (effect.type === "normal_attack") {
-
-                            normalAttack += effect.value;
-
-                        }
+                        });
 
                     });
 
+                    result.textContent = `攻刃 : ${normalAttack}%`;
+
                 });
-
-                console.log(normalAttack);
-
-                result.textContent = `攻刃 : ${normalAttack}%`;
 
             });
 
             weaponList.appendChild(label);
             weaponList.appendChild(select);
+            weaponSelects.push(select);
 
         }
-
-        
 
     });
