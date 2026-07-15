@@ -16,7 +16,11 @@ Promise.all([
         function calculateResult() {
 
             const totals = {
-                normalAttack: 0
+                normal_attack: 0,
+                critical: 0,
+                additional_attack: 0,
+                skill_boost: 0,
+                TA_probability: 0,
             };
 
             weaponSelects.forEach(select => {
@@ -29,20 +33,26 @@ Promise.all([
 
                     skillData.effects.forEach(effect => {
 
+                        /*
                         if (effect.type === "normal_attack") {
 
-                            totals.normalAttack += effect.value;
+                            totals.normal_attack += effect.value;
 
                         }
+                            */
+
+                        totals[effect.type] += effect.value;
 
                     });
 
                 });
 
-                result.textContent = `攻刃 : ${totals.normalAttack}%`;
+                result.textContent = `攻刃 : ${totals.normal_attack}%`;
 
             });
 
+            console.log(totals);
+            
         }
 
         for (let i = 1; i <= 10; i++) {
