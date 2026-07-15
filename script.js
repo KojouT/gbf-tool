@@ -11,6 +11,14 @@ Promise.all([
         const weaponList = document.getElementById("weapon-list");
         const result = document.getElementById("result");
 
+        const effectNames = {
+            normal_attack: "攻刃",
+            critical: "クリティカル",
+            additional_attack: "追撃",
+            skill_boost: "スキル効果量UP",
+            TA_probability: "トリプルアタック確率",
+        };
+
         const weaponSelects = [];
 
         function calculateResult() {
@@ -41,7 +49,12 @@ Promise.all([
 
                 let resultText = "";
 
-                resultText += `攻刃 : ${totals.normal_attack}%\n`;
+                Object.entries(totals).forEach(([key, value]) => {
+                    const label = effectNames[key] ?? key;
+
+                    resultText += `${label} : ${value}%\n`;
+
+                });
 
                 result.textContent = resultText;
 
