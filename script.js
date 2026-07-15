@@ -33,26 +33,20 @@ Promise.all([
 
                     skillData.effects.forEach(effect => {
 
-                        /*
-                        if (effect.type === "normal_attack") {
-
-                            totals.normal_attack += effect.value;
-
-                        }
-                            */
-
                         totals[effect.type] += effect.value;
 
                     });
 
                 });
 
-                result.textContent = `攻刃 : ${totals.normal_attack}%`;
+                let resultText = "";
+
+                resultText += `攻刃 : ${totals.normal_attack}%\n`;
+
+                result.textContent = resultText;
 
             });
 
-            console.log(totals);
-            
         }
 
         for (let i = 1; i <= 10; i++) {
