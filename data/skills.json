@@ -51,5 +51,72 @@
         "value": 15
       }
     ]
+  },
+  {
+    "name": "機炎方陣・無双Ⅱ",
+    "effects": [
+      {
+        "type": "magna_attack",
+        "value": 15
+      },
+      {
+        "type": "DA_probability",
+        "value": 15
+      }
+    ]
+  },
+  {
+    "name": "機炎方陣・守護",
+    "effects": [
+      {
+        "type": "HP",
+        "value": 15
+      }
+    ]
+  },
+  {
+    "name": "グラディウス・プレナム",
+    "effects": [
+      {
+        "type": "ex_attack",
+        "value": 20
+      },
+      {
+        "type": "HP",
+        "value": 20
+      },
+      {
+        "type": "strength",
+        "value": 20
+      }
+    ]
+  },
+  {
+    "name": "スカンデレ・ファクルタス",
+    "effects": [
+      {
+        "type": "ab_limit_up",
+        "value": 20
+      }
+    ]
+  },
+  {
+    "name":"スカンデレ・アルカヌム",
+    "effects": [
+      {
+        "type": "charge_attack_damage_cap_up",
+        "value": 20
+      }
+    ]
+  },
+  {
+    "name": "フルゴル・インペトゥス",
+    "effects": [
+      {
+        "type": "vs_advantage_damage_up",
+        "value": 20
+      }
+    ]
   }
+
 ]

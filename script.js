@@ -13,23 +13,30 @@ Promise.all([
 
         const effectNames = {
             normal_attack: "攻刃",
+            magna_attack: "M攻刃",
+            ex_attack: "EX攻刃",
+            strength: "渾身",
             critical: "クリティカル",
             additional_attack: "追撃",
             skill_boost: "スキル効果量UP",
+            DA_probability: "ダブルアタック確率",
             TA_probability: "トリプルアタック確率",
+            HP: "HP",
+            vs_advantage_damage_up: "対有利与ダメ",
+            ab_limit_up: "アビD上限",
+            charge_attack_damage_cap_up: "奥義D上限"
         };
 
         const weaponSelects = [];
 
         function calculateResult() {
 
-            const totals = {
-                normal_attack: 0,
-                critical: 0,
-                additional_attack: 0,
-                skill_boost: 0,
-                TA_probability: 0,
-            };
+            const totals = {};
+
+            Object.keys(effectNames).forEach(effectType => {
+                totals[effectType] = 0;
+
+            });
 
             weaponSelects.forEach(select => {
 
@@ -54,7 +61,7 @@ Promise.all([
                     if (value === 0) {
                         return;
                     }
-                    
+
                     const label = effectNames[key] ?? key;
 
                     resultText += `${label} : ${value}%\n`;

@@ -19,5 +19,27 @@
             "紅蓮の刹那Ⅱ",
             "火の三手"
         ]
+    },
+    {
+        "id": "Scimitar of Brahman",
+        "name": "ブラフマンシミター",
+        "attribute": "火",
+        "weapontype": "剣",
+        "skills": [
+            "機炎方陣・無双Ⅱ",
+            "機炎方陣・守護"
+        ]
+    },
+    {
+        "id": "Ultima Sword",
+        "name": "オメガスウォード",
+        "attribute": "火",
+        "weapontype": "剣",
+        "skills": [
+            "グラディウス・プレナム",
+            "スカンデレ・アルカヌム",
+            "フルゴル・インペトゥス"
+        ]
     }
+
 ]
