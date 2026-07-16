@@ -50,6 +50,11 @@ Promise.all([
                 let resultText = "";
 
                 Object.entries(totals).forEach(([key, value]) => {
+
+                    if (value === 0) {
+                        return;
+                    }
+                    
                     const label = effectNames[key] ?? key;
 
                     resultText += `${label} : ${value}%\n`;
