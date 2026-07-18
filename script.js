@@ -29,6 +29,28 @@ Promise.all([
 
         const weaponSelects = [];
 
+        function calculateAttackMultiplier(totals) {
+            const normalAttackMultiplier = 1 + totals.normal_attack / 100;
+            const magnaAttackMultiplier = 1 + totals.magna_attack / 100;
+            const exAttackMultiplier = 1 + totals.ex_attack / 100;
+
+            const attackMultiplier =
+                normalAttackMultiplier *
+                magnaAttackMultiplier *
+                exAttackMultiplier;
+
+            console.log("通常攻刃倍率:", normalAttackMultiplier);
+            console.log("M攻刃倍率:", magnaAttackMultiplier);
+            console.log("EX攻刃倍率:", exAttackMultiplier);
+            console.log("攻撃力倍率:", attackMultiplier);
+
+            return attackMultiplier;
+        }
+
+        function calculateAttackPower(baseAttack, attackMultiplier) {
+            return baseAttack * attackMultiplier;
+        }
+
         function calculateResult() {
 
             const totals = {};
@@ -72,6 +94,16 @@ Promise.all([
 
             });
 
+            const attackMultiplier = calculateAttackMultiplier(totals);
+            
+            const baseAttack = 1000;
+
+            const attackPower = calculateAttackPower(
+                baseAttack,
+                attackMultiplier
+            );
+
+            console.log("計算後の攻撃力:", attackPower);
         }
 
         for (let i = 1; i <= 10; i++) {
