@@ -52,12 +52,10 @@ Promise.all([
         }
 
         function calculateResult() {
-
             const totals = {};
 
             Object.keys(effectNames).forEach(effectType => {
                 totals[effectType] = 0;
-
             });
 
             weaponSelects.forEach(select => {
@@ -76,34 +74,35 @@ Promise.all([
 
                 });
 
-                let resultText = "";
-
-                Object.entries(totals).forEach(([key, value]) => {
-
-                    if (value === 0) {
-                        return;
-                    }
-
-                    const label = effectNames[key] ?? key;
-
-                    resultText += `${label} : ${value}%\n`;
-
-                });
-
-                result.textContent = resultText;
-
             });
 
+            let resultText = "";
+
+            Object.entries(totals).forEach(([key, value]) => {
+
+                if (value === 0) {
+                    return;
+                }
+
+                const label = effectNames[key] ?? key;
+
+                resultText += `${label} : ${value}%\n`;
+            });
+
+
+
             const attackMultiplier = calculateAttackMultiplier(totals);
-            
-            const baseAttack = 1000;
+
+            const baseAttack = 10000;
 
             const attackPower = calculateAttackPower(
                 baseAttack,
                 attackMultiplier
             );
 
-            console.log("計算後の攻撃力:", attackPower);
+            resultText += `\n仮の攻撃力: ${Math.round(attackPower)}\n`;
+        
+            result.textContent = resultText;
         }
 
         for (let i = 1; i <= 10; i++) {
