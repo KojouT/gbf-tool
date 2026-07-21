@@ -99,7 +99,9 @@ Promise.all([
                 attackMultiplier
             );
 
-            resultText += `\n仮の攻撃力: ${Math.round(attackPower)}\n`;
+            const roundedAttackPower = Math.round(attackPower);
+
+            resultText += `\n仮の攻撃力: ${roundedAttackPower.toLocaleString("ja-JP")}\n`;
 
             result.textContent = resultText;
         }
