@@ -38,11 +38,6 @@ Promise.all([
                 magnaAttackMultiplier *
                 exAttackMultiplier;
 
-            console.log("通常攻刃倍率:", normalAttackMultiplier);
-            console.log("M攻刃倍率:", magnaAttackMultiplier);
-            console.log("EX攻刃倍率:", exAttackMultiplier);
-            console.log("攻撃力倍率:", attackMultiplier);
-
             return attackMultiplier;
         }
 
@@ -92,11 +87,12 @@ Promise.all([
                 resultText += `${label} : ${value}%\n`;
             });
 
-
-
             const attackMultiplier = calculateAttackMultiplier(totals);
 
-            const baseAttack = Number(baseAttackInput.value);
+            const baseAttack = Math.max(
+                0,
+                Number(baseAttackInput.value) || 0
+            );
 
             const attackPower = calculateAttackPower(
                 baseAttack,
