@@ -101,6 +101,7 @@ Promise.all([
 
             const roundedAttackPower = Math.round(attackPower);
 
+            resultText += `\n総合攻撃力倍率: ${attackMultiplier.toFixed(3)}倍\n`
             resultText += `\n仮の攻撃力: ${roundedAttackPower.toLocaleString("ja-JP")}\n`;
 
             result.textContent = resultText;
