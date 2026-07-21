@@ -9,6 +9,11 @@ Promise.all([
         const weaponList = document.getElementById("weapon-list");
         const result = document.getElementById("result");
         const baseAttackInput = document.getElementById("base-attack");
+        const normalAuraInput = document.getElementById("normal-aura");
+        const magnaAuraInput = document.getElementById("magna-aura");
+
+        console.log("通常加護:", normalAuraInput.value);
+        console.log("マグナ加護:", magnaAuraInput.value);
 
         const effectNames = {
             normal_attack: "攻刃",
@@ -28,9 +33,19 @@ Promise.all([
 
         const weaponSelects = [];
 
-        function calculateAttackMultiplier(totals) {
-            const normalAttackMultiplier = 1 + totals.normal_attack / 100;
-            const magnaAttackMultiplier = 1 + totals.magna_attack / 100;
+        function calculateAttackMultiplier(
+            totals,
+            normalAura,
+            magnaAura
+        ) {
+            const normalAttackMultiplier = 1 +
+                (totals.normal_attack / 100) *
+                (1 + normalAura / 100);
+
+            const magnaAttackMultiplier = 1 +
+                (totals.magna_attack / 100) *
+                (1 + magnaAura / 100);
+
             const exAttackMultiplier = 1 + totals.ex_attack / 100;
 
             const attackMultiplier =
@@ -70,7 +85,14 @@ Promise.all([
 
             });
 
+            //攻撃力のイベントリスナー
             baseAttackInput.addEventListener("input", () => {
+                calculateResult();
+            });
+            normalAuraInput.addEventListener("input", () => {
+                calculateResult();
+            });
+            magnaAuraInput.addEventListener("input", () => {
                 calculateResult();
             });
 
@@ -87,7 +109,21 @@ Promise.all([
                 resultText += `${label} : ${value}%\n`;
             });
 
-            const attackMultiplier = calculateAttackMultiplier(totals);
+            const normalAura = Math.max(
+                0,
+                Number(normalAuraInput.value) || 0
+            );
+
+            const magnaAura = Math.max(
+                0,
+                Number(magnaAuraInput.value) || 0
+            );
+
+            const attackMultiplier = calculateAttackMultiplier(
+                totals,
+                normalAura,
+                magnaAura
+            );
 
             const baseAttack = Math.max(
                 0,
