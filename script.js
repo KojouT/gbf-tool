@@ -5,11 +5,10 @@ Promise.all([
         .then(response => response.json())
 ])
     .then(([weapons, skills]) => {
-        console.log(weapons);
-        console.log(skills);
 
         const weaponList = document.getElementById("weapon-list");
         const result = document.getElementById("result");
+        const baseAttackInput = document.getElementById("base-attack");
 
         const effectNames = {
             normal_attack: "攻刃",
@@ -76,6 +75,10 @@ Promise.all([
 
             });
 
+            baseAttackInput.addEventListener("input", () => {
+                calculateResult();
+            });
+
             let resultText = "";
 
             Object.entries(totals).forEach(([key, value]) => {
@@ -93,7 +96,7 @@ Promise.all([
 
             const attackMultiplier = calculateAttackMultiplier(totals);
 
-            const baseAttack = 10000;
+            const baseAttack = Number(baseAttackInput.value);
 
             const attackPower = calculateAttackPower(
                 baseAttack,
@@ -101,7 +104,7 @@ Promise.all([
             );
 
             resultText += `\n仮の攻撃力: ${Math.round(attackPower)}\n`;
-        
+
             result.textContent = resultText;
         }
 
@@ -135,5 +138,8 @@ Promise.all([
             weaponSelects.push(select);
 
         }
+
+        // ページを開いた直後の初回計算
+        calculateResult();
 
     });

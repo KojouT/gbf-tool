@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <h1>グラブル編成支援ツール</h1>
@@ -27,6 +29,10 @@
 
     <h2>集計結果</h2>
 
+    <label for="base-attack">基本攻撃力</label>
+
+    <input type="number" id="base-attack" value="10000" min="0" step="1">
+
     <div id="result">
         集計結果はここに表示されます
     </div>
@@ -34,4 +40,5 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>
