@@ -33,18 +33,14 @@ Promise.all([
 
         const weaponSelects = [];
 
-        function calculateAttackMultiplier(
-            totals,
-            normalAura,
-            magnaAura
-        ) {
+        function calculateAttackMultiplier(totals, auras) {
             const normalAttackMultiplier = 1 +
                 (totals.normal_attack / 100) *
-                (1 + normalAura / 100);
+                (1 + auras.normal / 100);
 
             const magnaAttackMultiplier = 1 +
                 (totals.magna_attack / 100) *
-                (1 + magnaAura / 100);
+                (1 + auras.magna / 100);
 
             const exAttackMultiplier = 1 + totals.ex_attack / 100;
 
@@ -109,20 +105,21 @@ Promise.all([
                 resultText += `${label} : ${value}%\n`;
             });
 
-            const normalAura = Math.max(
-                0,
-                Number(normalAuraInput.value) || 0
-            );
+            const auras = {
+                normal: Math.max(
+                    0,
+                    Number(normalAuraInput.value) || 0
+                ),
 
-            const magnaAura = Math.max(
-                0,
-                Number(magnaAuraInput.value) || 0
-            );
+                magna: Math.max(
+                    0,
+                    Number(magnaAuraInput.value) || 0
+                )
+            };
 
             const attackMultiplier = calculateAttackMultiplier(
                 totals,
-                normalAura,
-                magnaAura
+                auras
             );
 
             const baseAttack = Math.max(
