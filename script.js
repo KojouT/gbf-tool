@@ -131,8 +131,11 @@ Promise.all([
 
             const roundedAttackPower = Math.round(attackPower);
 
-            resultText += `\n総合攻撃力倍率: ${attackMultiplier.toFixed(3)}倍\n`
-            resultText += `\n仮の攻撃力: ${roundedAttackPower.toLocaleString("ja-JP")}\n`;
+            resultText += `\n通常攻刃倍率: ${attackMultipliers.normal.toFixed(3)}倍\n`;
+            resultText += `マグナ攻刃倍率: ${attackMultipliers.magna.toFixed(3)}倍\n`;
+            resultText += `Ex攻刃倍率: ${attackMultipliers.ex.toFixed(3)}倍\n`;
+            resultText += `総合攻撃力倍率: ${attackMultipliers.total.toFixed(3)}倍\n`
+            resultText += `仮の攻撃力: ${roundedAttackPower.toLocaleString("ja-JP")}\n`;
 
             result.textContent = resultText;
         }
