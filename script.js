@@ -49,13 +49,19 @@ Promise.all([
                 magnaAttackMultiplier *
                 exAttackMultiplier;
 
-            return attackMultiplier;
+            return {
+                normal: normalAttackMultiplier,
+                magna: magnaAttackMultiplier,
+                ex: exAttackMultiplier,
+                total: attackMultiplier
+            };
         }
 
         function calculateAttackPower(baseAttack, attackMultiplier) {
             return baseAttack * attackMultiplier;
         }
 
+        //計算と表示
         function calculateResult() {
             const totals = {};
 
@@ -79,17 +85,6 @@ Promise.all([
 
                 });
 
-            });
-
-            //攻撃力のイベントリスナー
-            baseAttackInput.addEventListener("input", () => {
-                calculateResult();
-            });
-            normalAuraInput.addEventListener("input", () => {
-                calculateResult();
-            });
-            magnaAuraInput.addEventListener("input", () => {
-                calculateResult();
             });
 
             let resultText = "";
@@ -117,10 +112,12 @@ Promise.all([
                 )
             };
 
-            const attackMultiplier = calculateAttackMultiplier(
+            const attackMultipliers = calculateAttackMultiplier(
                 totals,
                 auras
             );
+
+            const attackMultiplier = attackMultipliers.total;
 
             const baseAttack = Math.max(
                 0,
@@ -170,6 +167,18 @@ Promise.all([
             weaponSelects.push(select);
 
         }
+
+        //攻撃力のイベントリスナー
+        baseAttackInput.addEventListener("input", () => {
+            calculateResult();
+        });
+        normalAuraInput.addEventListener("input", () => {
+            calculateResult();
+        });
+        magnaAuraInput.addEventListener("input", () => {
+            calculateResult();
+        });
+
 
         // ページを開いた直後の初回計算
         calculateResult();
