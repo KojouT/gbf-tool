@@ -87,7 +87,7 @@ Promise.all([
 
             });
 
-            let resultText = "";
+            let resultText = "【スキル効果量】\n";
 
             Object.entries(totals).forEach(([key, value]) => {
 
@@ -131,7 +131,8 @@ Promise.all([
 
             const roundedAttackPower = Math.round(attackPower);
 
-            resultText += `\n通常攻刃倍率: ${attackMultipliers.normal.toFixed(3)}倍\n`;
+            resultText += "\n【攻撃力計算】\n";
+            resultText += `通常攻刃倍率: ${attackMultipliers.normal.toFixed(3)}倍\n`;
             resultText += `マグナ攻刃倍率: ${attackMultipliers.magna.toFixed(3)}倍\n`;
             resultText += `Ex攻刃倍率: ${attackMultipliers.ex.toFixed(3)}倍\n`;
             resultText += `総合攻撃力倍率: ${attackMultipliers.total.toFixed(3)}倍\n`
