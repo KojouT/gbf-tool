@@ -132,6 +132,11 @@ Promise.all([
             const roundedAttackPower = Math.round(attackPower);
 
             resultText += "\n【攻撃力計算】\n";
+
+            resultText += `基礎攻撃力: ${baseAttack.toLocaleString("ja-JP")}\n`;
+            resultText += `通常スキル加護: ${auras.normal}%\n`;
+            resultText += `マグナスキル加護: ${auras.magna}%\n\n`;
+
             resultText += `通常攻刃倍率: ${attackMultipliers.normal.toFixed(3)}倍\n`;
             resultText += `マグナ攻刃倍率: ${attackMultipliers.magna.toFixed(3)}倍\n`;
             resultText += `Ex攻刃倍率: ${attackMultipliers.ex.toFixed(3)}倍\n`;
